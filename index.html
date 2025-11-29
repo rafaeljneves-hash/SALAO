@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salão Elegância - Cabelo & Estética</title>
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #3a3a3a);
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        .logo span {
+            color: #c0c0c0;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #c0c0c0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #333, #555);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(to right, #444, #666);
+        }
+        
+        /* Serviços */
+        .servicos {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #888, #ccc);
+            margin: 15px auto;
+        }
+        
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .servico-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .servico-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .servico-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .servico-card .preco {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #c0c0c0;
+        }
+        
+        .servico-card .btn {
+            margin-top: 10px;
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+        
+        /* Formulário */
+        .agendamento {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .servicos-selecionados {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        
+        .servico-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .servico-item:last-child {
+            border-bottom: none;
+        }
+        
+        .total {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 15px;
+            color: #c0c0c0;
+        }
+        
+        /* Contato */
+        .contato {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+            text-align: center;
+        }
+        
+        .whatsapp-btn {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            margin: 20px 0;
+        }
+        
+        .whatsapp-btn:hover {
+            background: linear-gradient(to right, #2be076, #17a992);
+        }
+        
+        /* Footer */
+        footer {
+            background: #0f0f0f;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #c0c0c0;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Salão <span>Elegância</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#agendamento">Agendamento</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Transforme seu visual com nossos especialistas</h1>
+            <p>Oferecemos os melhores serviços de beleza com profissionais qualificados para realçar sua beleza natural</p>
+            <a href="#agendamento" class="btn">Agendar Horário</a>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="servicos" id="servicos">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <h3>Corte de Cabelo</h3>
+                    <p>Estilo personalizado para valorizar seu rosto</p>
+                    <div class="preco">R$ 15</div>
+                    <button class="btn adicionar-servico" data-servico="Corte" data-preco="15">Adicionar</button>
+                </div>
+                <div class="servico-card">
+                    <h3>Sobrancelha</h3>
+                    <p>Design perfeito para realçar seu olhar</p>
+                    <div class="preco">R$ 8</div>
+                    <button class="btn adicionar-servico" data-servico="Sobrancelha" data-preco="8">Adicionar</button>
+                </div>
+                <div class="servico-card">
+                    <h3>Barba</h3>
+                    <p>Acabamento impecável para sua barba</p>
+                    <div class="preco">R$ 10</div>
+                    <button class="btn adicionar-servico" data-servico="Barba" data-preco="10">Adicionar</button>
+                </div>
+                <div class="servico-card">
+                    <h3>Relaxamento</h3>
+                    <p>Tratamento para cabelos cacheados e crespos</p>
+                    <div class="preco">R$ 12</div>
+                    <button class="btn adicionar-servico" data-servico="Relaxamento" data-preco="12">Adicionar</button>
+                </div>
+                <div class="servico-card">
+                    <h3>Luzes</h3>
+                    <p>Realce de mechas para um visual moderno</p>
+                    <div class="preco">R$ 12</div>
+                    <button class="btn adicionar-servico" data-servico="Luzes" data-preco="12">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário de Agendamento -->
+    <section class="agendamento" id="agendamento">
+        <div class="container">
+            <h2 class="section-title">Agende seu Horário</h2>
+            <div class="form-container">
+                <form id="form-agendamento" action="https://formsubmit.co/rafaelj.neves@uni9.edu.br" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="Novo Agendamento - Salão Elegância">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="data">Data Desejada</label>
+                        <input type="date" id="data" name="data" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="horario">Horário Desejado</label>
+                        <input type="time" id="horario" name="horario" class="form-control" required>
+                    </div>
+                    
+                    <div class="servicos-selecionados" id="servicos-selecionados">
+                        <h3>Serviços Selecionados</h3>
+                        <div id="lista-servicos"></div>
+                        <div class="total">Total: R$ <span id="total-preco">0</span></div>
+                        <input type="hidden" id="servicos-input" name="servicos">
+                        <input type="hidden" id="total-input" name="total">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem (Opcional)</label>
+                        <textarea id="mensagem" name="mensagem" class="form-control" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Enviar Agendamento</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contato" id="contato">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <p>Precisa de ajuda ou tem dúvidas? Entre em contato conosco!</p>
+            <a href="https://wa.me/5511950644016" class="btn whatsapp-btn" target="_blank">Falar no WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Horário de Funcionamento</h3>
+                    <p>Segunda a Sábado: 9h às 20h</p>
+                    <p>Domingo: 10h às 23h - Iremos abrir aos domingos</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Localização</h3>
+                    <p>Viela,03 - Travessa com a  AV. Florestan fernandes n°1239</p>
+                    <p>São Paulo - SP</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Telefone: (11) 95064-4016</p>
+                    <p>Email: rafaelj.neves@uni9.edu.br</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Salão Elegância. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Selecionar serviços
+        document.addEventListener('DOMContentLoaded', function() {
+            const servicosSelecionados = [];
+            let total = 0;
+            
+            // Botões para adicionar serviços
+            const botoesServicos = document.querySelectorAll('.adicionar-servico');
+            const listaServicos = document.getElementById('lista-servicos');
+            const totalPreco = document.getElementById('total-preco');
+            const servicosInput = document.getElementById('servicos-input');
+            const totalInput = document.getElementById('total-input');
+            
+            botoesServicos.forEach(botao => {
+                botao.addEventListener('click', function() {
+                    const servico = this.getAttribute('data-servico');
+                    const preco = parseFloat(this.getAttribute('data-preco'));
+                    
+                    // Verificar se o serviço já foi adicionado
+                    const index = servicosSelecionados.findIndex(item => item.servico === servico);
+                    
+                    if (index === -1) {
+                        // Adicionar serviço
+                        servicosSelecionados.push({servico, preco});
+                        total += preco;
+                        
+                        // Atualizar interface
+                        atualizarServicosSelecionados();
+                    } else {
+                        alert('Este serviço já foi adicionado!');
+                    }
+                });
+            });
+            
+            function atualizarServicosSelecionados() {
+                listaServicos.innerHTML = '';
+                
+                servicosSelecionados.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'servico-item';
+                    div.innerHTML = `
+                        <span>${item.servico}</span>
+                        <span>R$ ${item.preco.toFixed(2)}</span>
+                    `;
+                    listaServicos.appendChild(div);
+                });
+                
+                totalPreco.textContent = total.toFixed(2);
+                servicosInput.value = servicosSelecionados.map(item => item.servico).join(', ');
+                totalInput.value = total.toFixed(2);
+            }
+            
+            // Envio do formulário
+            const form = document.getElementById('form-agendamento');
+            form.addEventListener('submit', function(e) {
+                if (servicosSelecionados.length === 0) {
+                    e.preventDefault();
+                    alert('Por favor, selecione pelo menos um serviço!');
+                    return;
+                }
+                
+                // Adicionar informações extras ao formulário
+                const data = new FormData(form);
+                data.append('servicos_selecionados', servicosInput.value);
+                data.append('valor_total', totalInput.value);
+                
+                // Redirecionar para WhatsApp após envio bem-sucedido
+                form.addEventListener('submit', function() {
+                    setTimeout(function() {
+                        const nome = document.getElementById('nome').value;
+                        const telefone = document.getElementById('telefone').value;
+                        const servicos = servicosInput.value;
+                        const totalValor = totalInput.value;
+                        
+                        const mensagem = `Olá! Gostaria de confirmar meu agendamento no Salão Elegância.%0A%0ANome: ${nome}%0ATelefone: ${telefone}%0AServiços: ${servicos}%0AValor Total: R$ ${totalValor}`;
+                        
+                        window.open(`https://wa.me/5511950644016?text=${mensagem}`, '_blank');
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
